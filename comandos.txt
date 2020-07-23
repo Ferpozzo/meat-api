@@ -1,0 +1,50 @@
+compilador typescript modo watch 
+    tsc -w 
+
+
+ferramenta que starta o servidor
+    nodemon dist/main.js
+
+instalação de coisas:
+npm i nomedopacote --save(salva em produção) -D(salva em desenvolvimento)
+
+
+mongo: 
+
+lista o banco q vc está:
+db
+
+cria ou muda para um banco específico:
+use nomedobanco
+
+criar coleção e/ou adicionar um valor (insert)
+db.nomedacolecao.insert(objeto)
+
+consultar todos os objetos de uma coleção:
+db.nomedacolecao.find()
+
+consultar objetos filtrados de uma coleção:
+db.nomedacolecao.find({objeto com as informações})
+
+consultar o primeiro objeto de uma coleção:
+db.nomedacolecao.findOne()
+
+consultar o primeiro objeto filtrado de uma coleção:
+db.nomedacolecao.findOne({objeto com as informações})
+
+Alterar objetos no mongo:
+primeiro você atribui em um objeto uma consulta
+var hal = db.heroes.findOne()
+depois você altera os atributos que quer
+hal.nome = 'Hal Jordan'
+hal.age = 33
+detalhe, você pode adicionar novos atributos no documento sem problemas:
+hal.email = 'hal@dc.com'
+e então faz o update, onde o 1 argumento é a consulta(CUIDADO PQ SEM A CONSULTA FAZ O UPDATE NA COLLECTION INTEIRA, update sem where)
+db.heroes.update({_id: hal._id},hal)
+
+Remover documentos do mongo: CUIDADO MESMO PROBLEMA DO UPDATE
+db.heroes.remove({nome: 'Hal Jordan'})
+
+criar um ObjectId(importante para não deixar pro mongo gerar e gerar logo na aplicação):
+ObjectId()
